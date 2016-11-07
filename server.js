@@ -21,13 +21,7 @@ app.use(bodyParser.urlencoded({ //to support URL-encoded bodies
 }));
 //REST API
 
-app.post('/1/sendmail', function(req,res){
-         if(sendEmail.send_email(req,res) == 1){
-			 res.send({success: true});
-		 }else{
-			 res.send({success: false});
-		 }		
-})
+app.post('/1/sendmail',sendEmail.send_email);
 //app.get('/api/meetups',meetupsController.list);
 
 //app.post('/api/meetups',meetupsController.create);

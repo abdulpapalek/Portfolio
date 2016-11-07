@@ -24,7 +24,7 @@ module.exports.send_email = function(req,res){
 		  port: 587, // port for secure SMTP
 		  auth: {
 			user: "alexander.amante.nec@gmail.com",
-			pass: "amante.ak21548"
+			pass: "akimbot21548"
 		  }
 		})));
 		
@@ -38,10 +38,12 @@ module.exports.send_email = function(req,res){
 		transport.sendMail(mail, function(error,response){
 			if(error){
 				console.log(error);
-				return 0;
+				res.status(400);
+				res.send("None shall pass:" + error);
 			}else{
 				console.log("Message sent" + response.message);
-				return 1;
+				res.status(200);
+				res.send("Message Send:" + response.message);
 			}
 			
 			transport.close();
